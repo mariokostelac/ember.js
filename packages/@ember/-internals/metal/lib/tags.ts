@@ -20,14 +20,11 @@ export function tagForProperty(object: any, propertyKey: string | symbol, _meta?
   if (objectType !== 'function' && (objectType !== 'object' || object === null)) {
     return CONSTANT_TAG;
   }
+
   let meta = _meta === undefined ? metaFor(object) : _meta;
-
-  if (isProxy(object)) {
-    return tagFor(object, meta);
-  }
-
   let tags = meta.writableTags();
   let tag = tags[propertyKey];
+
   if (tag) {
     return tag;
   }

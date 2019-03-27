@@ -15,7 +15,7 @@ import {
   tagFor,
   computed,
 } from '@ember/-internals/metal';
-import { setProxy } from '@ember/-internals/utils';
+import { setProxy, TRACKABLE_OBJECT } from '@ember/-internals/utils';
 import { assert } from '@ember/debug';
 
 function contentPropertyDidChange(content, contentKey) {
@@ -44,6 +44,8 @@ export function contentFor(proxy, m) {
   @private
 */
 export default Mixin.create({
+  [TRACKABLE_OBJECT]: true,
+
   /**
     The object whose properties will be forwarded.
 
